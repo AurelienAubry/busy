@@ -30,3 +30,8 @@ Before sending data, a node verifies that the medium is free by sensing it : if 
 When teh receiver receives the message, he will compute the CRC of the message, and compare it with the received CRC. If the values match, he sends an `ACK` message to the sender. Otherwise, he sends a `NACK` message.
 If the sender receives a `NACK` message, or no message at all, he will try to retransmit the lost message.
 The retransmission his scheduled using an exponential backoff algorithm : a random time is picked within the `[0-CW]` range, where `CW = 2**attempt_nb` and `CW <= 256 = 2**8`.
+
+## OpCode List
+- 0x6 (0110) : `DATA`
+- 0x9 (1001) : `NACK`
+- 0xF (1111) : `ACK`
